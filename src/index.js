@@ -7,10 +7,41 @@ import { BrowserRouter } from "react-router-dom";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
+
+let container = (
+    <div style={{ border: "3px solid red" }}>
+        <h2>Hola Titulo</h2>
+        <div>Cuerpo del mensaje</div>
+        <div>
+            <h4>Footer del mensaje</h4>
+        </div>
+    </div>
+);
+
+let titleElement = React.createElement("h2", {}, "Hola Titulo");
+let bodyElement = React.createElement("div", {}, "Cuerpo del mensaje");
+let footerElement = React.createElement(
+    "div",
+    {},
+    React.createElement("h4", {}, "Footer del mensaje")
+);
+
+let container2 = React.createElement(
+    "div",
+    {
+        style: { border: "3px solid blue" },
+    },
+    [titleElement, bodyElement, footerElement]
+);
+
 root.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <div>
+        {container}
+        {container2}
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </div>
 );
 // JSX -> Combina JS con XML (HTML), siempre que escriba XML
 // debo de generar un solo padre del XML escrito.
